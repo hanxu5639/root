@@ -10,9 +10,9 @@ import java.io.Serializable;
 public class UserBean implements Serializable{
     private Integer userId;//用户主键id
 
-    private String userName;//用户名
+    private String loginName;//登录名
 
-    private String password;//密码
+    private String password;//登录密码
 
     public Integer getUserId() {
         return userId;
@@ -22,15 +22,15 @@ public class UserBean implements Serializable{
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
-    }
+    public String getLoginName() {
+		return loginName;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
-    }
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
 
-    public String getPassword() {
+	public String getPassword() {
         return password;
     }
 
