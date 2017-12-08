@@ -6,6 +6,7 @@
     <id column="seat_num" jdbcType="INTEGER" property="seatNum" />
     <result column="hall_id" jdbcType="INTEGER" property="hallId" />
     <result column="work_off" jdbcType="INTEGER" property="workOff" />
+    <association property="hb" javaType="com.xa.bean.HallBean" column="hall_id" select="com.xa.dao.HallDao.getOneHall"></association>
   </resultMap>
   
   <select id="getAllSeat" resultMap="mySeat">

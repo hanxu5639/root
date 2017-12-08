@@ -1,14 +1,17 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-String path = request.getContextPath();  
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+	+ request.getServerName() + ":" + request.getServerPort()
+	+ path + "/";
 %>
 
 <!doctype html>
 <html>
 <head>
 <base href="<%=basePath%>">
+<meta charset="utf-8">
 
 <meta charset="utf-8">
 <link rel="stylesheet" href="css/base.css"  />
@@ -17,10 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>在线影院票务系统</title>
 </head>
 <script type="text/javascript">
-function reserve(id){
-	window.location.href="/content.jsp";
+function reserve(id,time){
 	
-	
+	 window.location.href="all?id="+id+"&time="+time; 
 }
 </script>
 <body style="background-color: white;">
@@ -32,14 +34,9 @@ function reserve(id){
 			
             <div class="login-info ue-clear">
                 <div class="welcome ue-clear"><span>欢迎您,</span>${sessionScope.ub.userName}</div>
-                <div class="login-msg ue-clear">
-                    <a href="javascript:;" id="msg" class="msg-txt">消息</a>
-                    <a href="javascript:;" class="msg-num">10</a>
-                </div>
             </div>
             
 			<div class="toolbar ue-clear">
-                <a href="index.jsp" class="home-btn">首页</a>
                 <a href="javascript:;" class="quit-btn exit"></a>
             </div>
         </div>
@@ -50,8 +47,13 @@ function reserve(id){
     	<thead>
         	<tr>
                 <th class="hallName">放映厅名字</th>
+                
 				<th class="movieName">电影名</th>
-                <th class="showTime">放映时间</th>				
+				
+                <th class="startTime">放映开始时间</th>
+               
+                <th class="endTime">放映结束时间</th>	
+                			
                 <th class="operate">操作</th>
             </tr>
         </thead>
@@ -59,12 +61,18 @@ function reserve(id){
         <c:forEach items="${sh}" var="s">
         	<tr>
                 <td class="name">${s.hb.hallName }</td>
+               
 				<td class="name">${s.mb.movieName }</td>
-				<td class="process">${s.showTimeStart }-${s.showTimeEnd }</td>
+				
+				<td class="process" id="">${s.showTimeStart }</td>
+				
+				<td class="process">${s.showTimeEnd }</td>
+				
                 <td class="operate">
-					<a href="javascript:reserve(${s.showId})">预订/购买</a>
+					<a href="javascript:reserve('${s.showId}','${s.showTimeStart }')">预订/购买</a>
 				</td>
             </tr>	
+          
          </c:forEach>		
         </tbody>
     </table>

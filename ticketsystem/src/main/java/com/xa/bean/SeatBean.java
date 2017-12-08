@@ -13,6 +13,8 @@ public class SeatBean implements Serializable{
     private Integer hallId;//放映厅主键id
 
     private Integer workOff;//是否还有该座位
+    
+    private HallBean hb;//放映厅
 
     public Integer getSeatNum() {
         return seatNum;
@@ -37,4 +39,14 @@ public class SeatBean implements Serializable{
     public void setWorkOff(Integer workOff) {
         this.workOff = workOff;
     }
+
+	public HallBean getHb() {
+		return hb;
+	}
+
+	public void setHb(HallBean hb) {
+		this.hb = hb;
+	}
+    
+    
 }
