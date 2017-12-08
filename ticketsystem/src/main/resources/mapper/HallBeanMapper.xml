@@ -8,4 +8,11 @@
     <result column="hall_seat" jdbcType="INTEGER" property="hallSeat" />
   </resultMap>
  
+ <select id="getHallAll" resultMap="myHall">
+     select hall_id,hall_name,hall_seat from hall_tb
+ </select>
+ 
+ <select id="getOneHall" resultMap="myHall">
+     select hall_id,hall_name,hall_seat from hall_tb where hall_id = #{hallId}
+ </select>
 </mapper>

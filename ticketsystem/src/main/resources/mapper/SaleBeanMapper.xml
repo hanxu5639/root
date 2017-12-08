@@ -9,6 +9,18 @@
     <result column="seat_num" jdbcType="INTEGER" property="seatNum" />
     <result column="show_id" jdbcType="INTEGER" property="showId" />
     <result column="hall_id" jdbcType="INTEGER" property="hallId" />
+    <result column="sale_time" javaType="DATE" property="saleTime"/>
   </resultMap>
  
+ <select id="getAllSale" resultMap="mySale">
+    select sale_id,user_id,movie_id,seat_num,show_id,hall_id,sale_time from sale_tb
+ </select>
+ 
+ <select id="getOneSale" resultMap="mySale">
+    select sale_id,user_id,movie_id,seat_num,show_id,hall_id,sale_time from sale_tb where sale_id = #{saleId}
+ </select>
+ 
+ <insert id="saveSale"  useGeneratedKeys="true" keyProperty="saleId" parameterType="com.xa.bean.SaleBean">
+    insert into sale_tb(sale_id,user_id,movie_id,seat_num,show_id,hall_id,sale_time) values(null,#{userId},#{movieId},#{seatNum},#{showId},#{hallId},#{saleTime})
+ </insert>
 </mapper>

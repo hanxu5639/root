@@ -118,4 +118,11 @@
         <property name="configLocation" value="classpath:ehcache.xml" />
         <property name="shared" value="true" />
     </bean>
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+           <mvc:mapping path="/**"/>
+           <bean class="com.xa.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

@@ -14,6 +14,9 @@ public class UserBean implements Serializable{
 
     private String password;//登录密码
 
+    private String userName;//用户名
+    
+    
     public Integer getUserId() {
         return userId;
     }
@@ -37,4 +40,14 @@ public class UserBean implements Serializable{
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
     }
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+    
+    
 }

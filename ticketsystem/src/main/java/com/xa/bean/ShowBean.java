@@ -2,6 +2,7 @@ package com.xa.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 /**
  * 放映
  * @author try hard
@@ -17,6 +18,12 @@ public class ShowBean implements Serializable{
     private String showTimeStart;//影片放映时间
 
     private String showTimeEnd;//影片结束时间
+    
+    private MovieBean mb;//影片类
+    
+    private HallBean hb;//放映厅类
+    
+
 
     public Integer getShowId() {
         return showId;
@@ -57,4 +64,24 @@ public class ShowBean implements Serializable{
     public void setShowTimeEnd(String showTimeEnd) {
         this.showTimeEnd = showTimeEnd;
     }
+
+	public MovieBean getMb() {
+		return mb;
+	}
+
+	public void setMb(MovieBean mb) {
+		this.mb = mb;
+	}
+
+	public HallBean getHb() {
+		return hb;
+	}
+
+	public void setHb(HallBean hb) {
+		this.hb = hb;
+	}
+
+	
+    
+    
 }

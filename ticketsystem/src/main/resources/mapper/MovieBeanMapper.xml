@@ -7,4 +7,11 @@
     <result column="movie_name" jdbcType="VARCHAR" property="movieName" />
   </resultMap>
   
+  <select id="getAllMovie" resultMap="myMovie">
+      select movie_id,movie_name from movie_tb
+  </select>
+  
+  <select id="getOneMovie" resultMap="myMovie">
+      select movie_id,movie_name from movie_tb where movie_id = #{movieId}
+  </select>
 </mapper>

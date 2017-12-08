@@ -8,6 +8,16 @@
     <result column="movie_id" jdbcType="INTEGER" property="movieId" />
     <result column="show_time_start" jdbcType="TIME" property="showTimeStart" />
     <result column="show_time_end" jdbcType="TIME" property="showTimeEnd" />
+    <association property="mb" javaType="com.xa.bean.MovieBean" column="movie_id" select="com.xa.dao.MovieDao.getOneMovie"></association>
+    <association property="hb" javaType="com.xa.bean.HallBean" column="hall_id" select="com.xa.dao.HallDao.getOneHall"></association>
   </resultMap>
+  
  
+ <select id="getAllShow" resultMap="myShow">
+     select show_id,hall_id,movie_id,show_time_start,show_time_end from show_tb
+ </select>
+ 
+ <select id="getOneShow" resultMap="myShow">
+     select show_id,hall_id,movie_id,show_time_start,show_time_end from show_tb where show_id = #{showId}
+ </select>
 </mapper>

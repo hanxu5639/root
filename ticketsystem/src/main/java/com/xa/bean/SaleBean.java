@@ -18,7 +18,9 @@ public class SaleBean implements Serializable{
 
     private Integer showId;//放映主键id
 
-    private Integer hallId;
+    private Integer hallId;//放映厅id
+    
+    private String saleTime;//售出时间
 
     public Integer getSaleId() {
         return saleId;
@@ -67,4 +69,14 @@ public class SaleBean implements Serializable{
     public void setHallId(Integer hallId) {
         this.hallId = hallId;
     }
+
+	public String getSaleTime() {
+		return saleTime;
+	}
+
+	public void setSaleTime(String saleTime) {
+		this.saleTime = saleTime;
+	}
+    
+    
 }

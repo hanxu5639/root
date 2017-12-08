@@ -8,4 +8,10 @@
     <result column="work_off" jdbcType="INTEGER" property="workOff" />
   </resultMap>
   
+  <select id="getAllSeat" resultMap="mySeat">
+    select seat_num,hall_id,work_off from seat_tb
+  </select>
+  <select id="getOneSeat" resultMap="mySeat">
+    select seat_num,hall_id,work_off from seat_tb where seat_num = #{seatNum}
+  </select>
 </mapper>
