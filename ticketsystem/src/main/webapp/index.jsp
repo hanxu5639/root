@@ -17,15 +17,26 @@
 <link rel="stylesheet" href="css/base.css"  />
 <link rel="stylesheet" type="text/css" href="css/jquery.dialog.css" />
 <link rel="stylesheet" href="css/index.css"  />
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <title>在线影院票务系统</title>
 </head>
 <script type="text/javascript">
-function reserve(id,time){
+function reserves(id){
+ 	 window.location.href="all?id="+id; 
+ }
+ 
+ $(function(){
+	 var msg = $('#msg').val();
+	 if(msg != null && msg !=""){
+		 alert(msg);
+	 }
 	
-	 window.location.href="all?id="+id+"&time="+time; 
-}
+ });
+ 
+ 
 </script>
 <body style="background-color: white;">
+<input type="hidden" id="msg" value="${mssg }">
 <div id="container">
 	<div id="hd">
     	<div class="hd-wrap ue-clear">
@@ -45,21 +56,21 @@ function reserve(id,time){
             	<!-- <iframe src="home.jsp" id="iframe" width="100%" height="100%" frameborder="0"></iframe> -->
      <table>
     	<thead>
-        	<tr>
-                <th class="hallName">放映厅名字</th>
+        	<tr style="width: 80px">
+                <th class="name">放映厅</th>
                 
-				<th class="movieName">电影名</th>
+				<th class="name">电影</th>
 				
-                <th class="startTime">放映开始时间</th>
+                <th class="process">放映开始时间</th>
                
-                <th class="endTime">放映结束时间</th>	
+                <th class="process">放映结束时间</th>	
                 			
                 <th class="operate">操作</th>
             </tr>
         </thead>
         <tbody>
         <c:forEach items="${sh}" var="s">
-        	<tr>
+        	<tr style="width: 80px">
                 <td class="name">${s.hb.hallName }</td>
                
 				<td class="name">${s.mb.movieName }</td>
@@ -69,7 +80,7 @@ function reserve(id,time){
 				<td class="process">${s.showTimeEnd }</td>
 				
                 <td class="operate">
-					<a href="javascript:reserve('${s.showId}','${s.showTimeStart }')">预订/购买</a>
+					<a href="javascript:reserves(${s.showId})">选座购票</a>
 				</td>
             </tr>	
           

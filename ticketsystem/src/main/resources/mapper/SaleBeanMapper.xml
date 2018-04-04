@@ -5,22 +5,22 @@
   <resultMap id="mySale" type="com.xa.bean.SaleBean">
     <id column="sale_id" jdbcType="INTEGER" property="saleId" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="movie_id" jdbcType="INTEGER" property="movieId" />
     <result column="seat_num" jdbcType="INTEGER" property="seatNum" />
     <result column="show_id" jdbcType="INTEGER" property="showId" />
-    <result column="hall_id" jdbcType="INTEGER" property="hallId" />
-    <result column="sale_time" javaType="DATE" property="saleTime"/>
+    <association property="shb"  javaType="com.xa.bean.ShowBean" column="show_id" select="com.xa.dao.ShowDao.getOneShow"></association>
+    <association property="seb" javaType="com.xa.bean.SeatBean" column="seat_num" select="com.xa.dao.SeatDao.getOneSeat"></association>
+    <association property="ub" javaType="com.xa.bean.UserBean" column="user_id" select="com.xa.dao.UserDao.getOneUser"></association>
   </resultMap>
  
  <select id="getAllSale" resultMap="mySale">
-    select sale_id,user_id,movie_id,seat_num,show_id,hall_id,sale_time from sale_tb
+    select sale_id,user_id,seat_num,show_id,sale_time from sale_tb
  </select>
  
  <select id="getOneSale" resultMap="mySale">
-    select sale_id,user_id,movie_id,seat_num,show_id,hall_id,sale_time from sale_tb where sale_id = #{saleId}
+    select sale_id,user_id,seat_num,show_id,sale_time from sale_tb where sale_id = #{saleId}
  </select>
  
  <insert id="saveSale"  useGeneratedKeys="true" keyProperty="saleId" parameterType="com.xa.bean.SaleBean">
-    insert into sale_tb(sale_id,user_id,movie_id,seat_num,show_id,hall_id,sale_time) values(null,#{userId},#{movieId},#{seatNum},#{showId},#{hallId},#{saleTime})
+    insert into sale_tb(sale_id,user_id,seat_num,show_id,sale_time) values(null,#{userId},#{seatNum},#{showId},NOW())
  </insert>
 </mapper>

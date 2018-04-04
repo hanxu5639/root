@@ -2,11 +2,14 @@ package com.xa.bean;
 
 import java.io.Serializable;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+
 /**
  * 座位
  * @author try hard
  *
  */
+@Qualifier("sb")
 public class SeatBean implements Serializable{
     private Integer seatNum;//座位号数主键id
 

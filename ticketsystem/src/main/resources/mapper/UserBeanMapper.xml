@@ -13,4 +13,8 @@
    select user_id,loginname,password,user_name from user_tb where loginname = #{ln} and password = #{ps}
   </select>
   
+  <select id="getOneUser" resultMap="myUser">
+   select user_id,loginname,password,user_name from user_tb where user_id = #{userId} 
+  </select>
+  
 </mapper>

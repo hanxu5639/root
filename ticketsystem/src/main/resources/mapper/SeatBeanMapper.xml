@@ -9,10 +9,16 @@
     <association property="hb" javaType="com.xa.bean.HallBean" column="hall_id" select="com.xa.dao.HallDao.getOneHall"></association>
   </resultMap>
   
-  <select id="getAllSeat" resultMap="mySeat">
-    select seat_num,hall_id,work_off from seat_tb
+  <select id="getBookedSeat" resultMap="mySeat">
+    select seat_num,hall_id,work_off from seat_tb where work_off = 0
+  </select>
+   <select id="getNoBookedSeat" resultMap="mySeat">
+    select seat_num,hall_id,work_off from seat_tb where work_off = 1
   </select>
   <select id="getOneSeat" resultMap="mySeat">
     select seat_num,hall_id,work_off from seat_tb where seat_num = #{seatNum}
   </select>
+  <update id="updateWorkOff">
+     update seat_tb set work_off = #{state} where seat_num = #{seatNum}
+  </update>
 </mapper>

@@ -14,7 +14,7 @@
   
  
  <select id="getAllShow" resultMap="myShow">
-     select show_id,hall_id,movie_id,show_time_start,show_time_end from show_tb
+     select show_id,hall_id,movie_id,show_time_start,show_time_end from show_tb where show_time_start > NOW() 
  </select>
  
  <select id="getOneShow" resultMap="myShow">

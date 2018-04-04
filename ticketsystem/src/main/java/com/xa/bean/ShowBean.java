@@ -9,6 +9,10 @@ import java.util.List;
  *
  */
 public class ShowBean implements Serializable{
+
+
+
+
     private Integer showId;//放映主键id
 
     private Integer hallId;//放映厅主键id
